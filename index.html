@@ -1,28 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App Store</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.webmanifest">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AppHub — Play Store Style</title>
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="data:image/svg+xml;utf8,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <rect width='100' height='100' rx='20' fill='%2322c55e'/>
+      <text x='50' y='58' font-size='56' text-anchor='middle' fill='white' font-family='Arial'>A</text>
+    </svg>">
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="A Play Store–style web app, installable (PWA), built with HTML, CSS and JS.">
 </head>
 <body>
-    <header>
-        <h1>My App Store</h1>
-        <input type="text" id="search" placeholder="Search apps...">
-    </header>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">A</span>
+      <span>AppHub</span>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search apps" aria-label="Search apps">
+      <button id="installBtn" class="btn ghost" title="Install App" style="display:none;">Install</button>
+    </div>
+  </header>
 
-    <main id="app-list">
-        <!-- Example App Card -->
-        <div class="app-card">
-            <img src="icons/sample-icon.png" alt="App Icon">
-            <h2>Sample App</h2>
-            <p>Short app description here.</p>
-            <a href="https://example.com/sample.apk" class="download-btn">Download APK</a>
-        </div>
-    </main>
+  <main>
+    <section class="hero">
+      <h1>Discover apps you’ll love</h1>
+      <p>Play Store–like UI. Installable. Works offline (cached pages).</p>
+      <a class="btn" href="#apps">Browse Apps</a>
+    </section>
 
-    <script src="app.js"></script>
+    <section class="categories" aria-label="Categories">
+      <h2>Categories</h2>
+      <div class="chips" id="categoryChips"></div>
+    </section>
+
+    <section id="apps" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <div><strong>AppHub</strong> — demo store UI. Pure HTML/CSS/JS.</div>
+    <nav>
+      <a href="./" aria-label="Home">Home</a>
+      <a href="#" onclick="openDocs();return false;" aria-label="Docs">Docs</a>
+    </nav>
+  </footer>
+
+  <!-- App detail modal -->
+  <dialog id="appModal">
+    <div class="modal-header">
+      <h3 id="modalTitle">App</h3>
+      <button id="closeModal" class="icon-btn" aria-label="Close">✖</button>
+    </div>
+    <div class="modal-body">
+      <img id="modalIcon" class="app-icon" alt="App icon">
+      <p id="modalDesc"></p>
+      <div class="screens" id="modalScreens"></div>
+      <div class="actions">
+        <a id="apkLink" class="btn" href="#" download>Download APK</a>
+        <a id="websiteLink" class="btn ghost" href="#" target="_blank" rel="noopener">Website</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="app.js" defer></script>
 </body>
-</html>
+                                                 </html>
